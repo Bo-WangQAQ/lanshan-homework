@@ -1,23 +1,56 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
+
+func add(x, y float64) float64 {
+	return x + y
+}
+
+func subtract(x, y float64) float64 {
+	return x - y
+}
+
+func multiply(x, y float64) float64 {
+	return x * y
+}
+
+func divide(x, y float64) float64 {
+	if y != 0 {
+		return x / y
+	}
+	panic("division by zero")
+}
 
 func main() {
-	var a, b int
-	var ch string
-	fmt.Println("请输入算式：")
-	fmt.Scan(&a, &ch, &b)
-	switch ch {
+	var operator string
+	var num1, num2 float64
+
+	fmt.Print("请输入第一个数字: ")
+	fmt.Scanln(&num1)
+
+	fmt.Print("请输入第二个数字: ")
+	fmt.Scanln(&num2)
+
+	fmt.Print("请输入操作符(+, -, *, /): ")
+	fmt.Scanln(&operator)
+
+	var result float64
+
+	switch operator {
 	case "+":
-		fmt.Println(a, ch, b, "=", a+b)
+		result = add(num1, num2)
 	case "-":
-		fmt.Println(a, ch, b, "=", a-b)
+		result = subtract(num1, num2)
 	case "*":
-		fmt.Println(a, ch, b, "=", a*b)
+		result = multiply(num1, num2)
 	case "/":
-		fmt.Println(a, ch, b, "=", a/b)
+		result = divide(num1, num2)
 	default:
-		fmt.Println("输入有误！")
+		fmt.Println("无效的操作符")
+		return
 	}
 
+	fmt.Printf("结果: %.2f\n", result)
 }
