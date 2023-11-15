@@ -77,7 +77,7 @@ func main() {
 
 	// 从命令行读取用户输入，并执行相应的操作
 	reader := bufio.NewReader(os.Stdin)
-
+	var input string
 	for {
 		fmt.Println("\nPlease choose an action:")
 		fmt.Println("1. Add electronic item")
@@ -121,18 +121,30 @@ func main() {
 			}
 			electronicInventory.AddElectronicItem(electronicItem)
 			fmt.Printf("Electronic item '%s' added to inventory.\n", name)
+			fmt.Println("按任意键继续...") //实现停顿,提升使用体验
+			fmt.Scanln(&input)
+			fmt.Println("--------------")
 
 		case "2":
 			fmt.Print("Enter electronic item name to remove: ")
 			itemName, _ := reader.ReadString('\n')
 			itemName = strings.TrimSpace(itemName)
 			electronicInventory.RemoveElectronicItem(itemName)
+			fmt.Println("按任意键继续...") //实现停顿,提升使用体验
+			fmt.Scanln(&input)
+			fmt.Println("--------------")
 
 		case "3":
 			electronicInventory.PrintElectronicInventory()
+			fmt.Println("按任意键继续...") //实现停顿,提升使用体验
+			fmt.Scanln(&input)
+			fmt.Println("--------------")
 
 		case "4":
 			electronicInventory.PrintBrandModelInfo()
+			fmt.Println("按任意键继续...") //实现停顿,提升使用体验
+			fmt.Scanln(&input)
+			fmt.Println("--------------")
 
 		case "5":
 			fmt.Println("Exiting...")
